@@ -9,7 +9,13 @@ const { tokenValidationMW } = require("./middlewares/auth.middleware");
 const expenseRouter = require("./routes/expense.route");
 const analysisRouter = require("./routes/anaylysis.route");
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://triptallyy.netlify.app", // allow your frontend domain
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 // Main routes
